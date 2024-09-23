@@ -20,9 +20,17 @@ Yet another Python project template.
 - [x] Installable via pip
 - [x] Command-line interface
 - [x] Interactive documentation
-- [ ] Some new planned feature
+- [ ] Project validation and auto-upgrading
+- [ ] Automatic test generation
+- [ ] GUI generation
 
 ## Installation
+
+Before starting, you'll need a GitHub account and Poetry account. For Poetry, you should go to your account settings and click on "Add API token" within the "API tokens" section where you can then name and add a token. Once created, copy the token and add it Poetry's config with this command:
+
+```bash
+poetry config pypi-token.pypi your-api-token
+```
 
 To install untitledpythonproject, simply run:
 
