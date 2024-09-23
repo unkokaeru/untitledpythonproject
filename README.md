@@ -9,7 +9,7 @@ Yet another Python project template.
 
 - [untitledpythonproject](#untitledpythonproject)
     - [Features](#features)
-    - [Installation](#installation)
+    - [Installation and Usage](#installation-and-usage)
     - [Usage](#usage)
     - [Documentation](#documentation)
     - [Contributing](#contributing)
@@ -24,7 +24,7 @@ Yet another Python project template.
 - [ ] Automatic test generation
 - [ ] GUI generation
 
-## Installation
+## Installation and Usage
 
 Before starting, you'll need a GitHub account and Poetry account. For Poetry, you should go to your account settings and click on "Add API token" within the "API tokens" section where you can then name and add a token. Once created, copy the token and add it Poetry's config with this command:
 
@@ -32,20 +32,16 @@ Before starting, you'll need a GitHub account and Poetry account. For Poetry, yo
 poetry config pypi-token.pypi your-api-token
 ```
 
-To install untitledpythonproject, simply run:
+To create a project with untitledpython project, simply run:
 
 ```bash
-pip install untitledpythonproject
+pip install cookiecutter
 ```
 
-## Usage
-
-After installation, you can use untitledpythonproject by running:
+and then
 
 ```bash
-$ python3 -m untitledpythonproject
-# or
-$ untitledpythonproject
+cookiecutter https://github.com/unkokaeru/untitledpythonproject.git
 ```
 
 ## Documentation

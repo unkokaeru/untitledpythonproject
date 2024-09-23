@@ -18,8 +18,7 @@ Yet another Python project template.
 
 -  [untitledpythonproject](#untitledpythonproject)
     -  `Features <#features>`__
-    -  `Installation <#installation>`__
-    -  `Usage <#usage>`__
+    -  `Installation and Usage <#installation-and-usage>`__
     -  `Documentation <#documentation>`__
     -  `Contributing <#contributing>`__
     -  `License <#license>`__
@@ -31,14 +30,21 @@ Features
 -  ☒ Command-line interface-  ☒ Interactive documentation
 -  ☐ Some new planned feature
 
-Installation
-------------
+Installation and Usage
+----------------------
 
-To install untitledpythonproject, simply run:
+Before starting, you'll need a GitHub account and Poetry account. For Poetry, you should go to your account settings and click on "Add API token" within the "API tokens" section where you can then name and add a token. Once created, copy the token and add it Poetry's config with this command:
 
 .. code-block:: bash
 
-    pip install untitledpythonproject
+    poetry config pypi-token.pypi your-api-token
+
+To create a project with untitledpython project, simply run:
+
+.. code-block:: bash
+
+    pip install cookiecutter
+    cookiecutter https://github.com/unkokaeru/untitledpythonproject.git
 
 Usage
 -----
