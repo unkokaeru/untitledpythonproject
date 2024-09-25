@@ -26,9 +26,12 @@ Yet another Python project template.
 Features
 --------
 
--  ☒ Installable via pip
--  ☒ Command-line interface-  ☒ Interactive documentation
--  ☐ Some new planned feature
+-  ☒ Installable via Cookiecutter
+-  ☒ Command-line interface
+-  ☒ Interactive documentation
+-  ☐ Project validation and auto-upgrading
+-  ☐ Automatic test generation
+-  ☐ GUI generation
 
 Installation and Usage
 ----------------------
@@ -44,7 +47,7 @@ To create a project with untitledpython project, simply run:
 .. code-block:: bash
 
     pip install cookiecutter
-    cookiecutter https://github.com/unkokaeru/untitledpythonproject.git
+    cookiecutter gh:unkokaeru/untitledpythonproject
 
 Usage
 -----

@@ -17,7 +17,7 @@ Yet another Python project template.
 
 ## Features
 
-- [x] Installable via pip
+- [x] Installable via Cookiecutter
 - [x] Command-line interface
 - [x] Interactive documentation
 - [ ] Project validation and auto-upgrading
@@ -41,7 +41,7 @@ pip install cookiecutter
 and then
 
 ```bash
-cookiecutter https://github.com/unkokaeru/untitledpythonproject.git
+cookiecutter gh:unkokaeru/untitledpythonproject
 ```
 
 ## Documentation
