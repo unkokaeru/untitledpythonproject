@@ -1,6 +1,6 @@
 """Computation package for the project."""
 
-__version__ = "0.1.0"
+__version__ = "{{ cookiecutter.project_version }}"
 
 import logging
 

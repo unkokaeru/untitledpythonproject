@@ -34,4 +34,4 @@ class Constants:
     FORBIDDEN_CODE: int = 403
 
     # Default values
-    DEFAULT_LOG_SAVE_PATH: Path = Path("untitledpythonproject_log.txt")
+    DEFAULT_LOG_SAVE_PATH: Path = Path("{{ cookiecutter.__project_name_dashed }}_log.txt")

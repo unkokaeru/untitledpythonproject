@@ -1,0 +1,31 @@
+{
+    "author_name": "",
+    "author_email": "",
+    "author_username": "",
+    "project_name": "",
+    "project_short_description": "A cool project that does cool things.",
+    "project_version": "0.1.0",
+    "copyright_year": "{% now 'utc', '%Y' %}",
+    "cli_required": true,
+    "gui_required": false,
+    "_jinja2_env_vars": {
+        "lstrip_blocks": true,
+        "trim_blocks": true
+    },
+    "_copy_without_render": [
+        ".github/workflows/*.yml"
+    ],
+    "__project_name_dashed": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "__project_name_underscored": "{{ cookiecutter.__project_name_dashed.replace('-', '_') }}",
+    "__prompts__": {
+        "author_name": "What is the project author's name?",
+        "author_email": "What is the project author's email?",
+        "author_username": "What is the project author's username?",
+        "project_name": "What is the project name?",
+        "project_short_description": "Describe the project in a short sentence.",
+        "project_version": "What is the project version?",
+        "copyright_year": "What is the year for the copyright?",
+        "cli_required": "Does the project require a CLI? (not implemented yet)",
+        "gui_required": "Does the project require a GUI? (will only affect documentation)"
+    }
+}

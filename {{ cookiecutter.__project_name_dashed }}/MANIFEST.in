@@ -1,0 +1,1 @@
+include source/{{ cookiecutter.__project_name_underscored}}/py.typed

@@ -1,0 +1,124 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "{{ cookiecutter.__project_name_dashed }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "{{ cookiecutter.__project_name_underscored }}", from = "source"}]
+homepage = "https://github.com/{{ cookiecutter.author_username }}/{{ cookiecutter.__project_name_dashed }}"
+repository = "https://github.com/{{ cookiecutter.author_username }}/{{ cookiecutter.__project_name_dashed }}"
+include = ["LICENSE", "source/{{ cookiecutter.__project_name_underscored }}/py.typed"]
+
+[tool.poetry.scripts]
+{{ cookiecutter.__project_name_dashed }} = "{{ cookiecutter.__project_name_underscored }}.main:main"
+
+[tool.poetry.dependencies]
+# Main project dependencies.
+python = ">=3.9,<4.0"
+rich = "^13.7.1"
+
+[tool.poetry.group.dev.dependencies]
+# Linters for use during development (e.g. via vscode).
+black = "^22.6.0"
+flake8 = "^5.0.0"
+flake8-docstrings = "^1.6.0"
+Flake8-pyproject = "^1.1.0.post0"
+isort = "^5.13.0"
+mypy = "^1.10.1"
+pre-commit = "^3.7.1"
+pydocstyle = "^6.1.0"
+ruff = "^0.5.2"
+
+[tool.poetry.group.types.dependencies]
+# Type stubs used by the package.
+types-PyYAML = "^6.0.0"
+
+[tool.poetry.group.test.dependencies]
+# For running tests.
+pytest = "^8.3.2"
+pytest-sugar = "^1.0.0"
+pytest-clarity = "^1.0.1"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
+pytest-socket = "^0.7.0"
+pytest-watch = "^4.2.0"
+pytest-testmon = "^2.1.1"
+tox = "^4.18.1"
+
+[tool.poetry.group.docs.dependencies]
+# For generating documentation.
+sphinx = "^8.0.2"
+
+[tool.poetry.group.release.dependencies]
+# For making a new versioned release of the project.
+gitchangelog = "^3.0.4"
+poetry-bumpversion = "^0.3.2"
+pystache = "^0.6.5"
+
+### Linting configs ###
+
+# Ruff config
+[tool.ruff]
+target-version = "py39"
+
+[tool.ruff.lint]
+extend-select = [
+    "UP",
+]
+
+# MyPy config
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = true
+warn_unreachable = true
+strict_equality = true
+pretty = true
+exclude = '(?x)( ^\. | ^docs | ^__pycache__ )'
+
+# Isort config
+[tool.isort]
+profile = 'black'
+
+# Black config
+[tool.black]
+line-length = 100
+exclude = '''
+/(
+    .*        # Excludes all files starting from the root
+    | docs    # Excludes the 'docs' directory
+    | __pycache__  # Excludes the '__pycache__' directory
+)/
+'''
+
+# Flake8 config
+[tool.flake8]
+max-line-length = 100
+exclude = ['.*', 'docs/', '**/__pycache__']
+docstring-convention = "numpy"
+ignore = ['W503', 'D301', 'D401']
+
+### Tool configs ###
+
+# Pydocstyle config
+[tool.pydocstyle]
+match = '(?!test)[^\._].*\.py'
+match-dir = '(?!tests)(?!docs)[^\.].*'
+inherit = false
+convention = 'numpy'
+
+# Cruft config
+[tool.cruft]
+skip = ["tests"]
