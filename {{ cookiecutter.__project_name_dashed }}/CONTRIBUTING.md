@@ -175,6 +175,7 @@ The header is mandatory and must follow this format:
   - **perf**: A code change that improves performance.
   - **refactor**: A code change that neither fixes a bug nor adds a feature.
   - **test**: Adding missing tests or correcting existing tests.
+  - **chore**: Automatic changes, like version bumping and linting.
 
 - **short summary**: A concise description of the change in present tense. Do not capitalize the first letter and do not end with a period.
 
