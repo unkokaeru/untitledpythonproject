@@ -9,7 +9,6 @@ import asyncio
 import functools
 import os
 import shlex
-import sys
 from asyncio.subprocess import Process
 from collections.abc import Awaitable, Callable
 from pathlib import Path
