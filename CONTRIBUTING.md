@@ -21,6 +21,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Best Practices](#best-practices)
 - [Version Support](#version-support)
 - [Commit Messages](#commit-messages)
+- [Handling Dependencies](#handling-dependencies)
 - [Documentation Strings](#documentation-strings)
 
 
@@ -185,6 +186,28 @@ Example header:
 ```
 feat: add logging functionality to data processing module
 ```
+
+### Handling Dependencies
+
+Before adding or removing any dependencies, please discuss your changes with the maintainers to ensure they align with the project's goals. We use [Poetry](https://python-poetry.org/) to manage dependencies, which simplifies the process compared to traditional methods like `pip`.
+
+To add a new dependency, use the `poetry add` command followed by the package name. For example:
+
+```bash
+$ poetry add requests
+```
+
+This command installs the specified package and updates the `pyproject.toml` file to include it.
+
+To remove a dependency, use the `poetry remove` command followed by the package name. For example:
+
+```bash
+$ poetry remove requests
+```
+
+This command uninstalls the specified package and updates the `pyproject.toml` file accordingly.
+
+By using these commands, you can effectively manage the project's dependencies while maintaining consistency.
 
 #### Documentation Strings
 
