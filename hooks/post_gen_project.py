@@ -17,20 +17,14 @@ from typing import ParamSpec, TypeVar
 
 from colorama import Fore, Style
 
-Parameters = ParamSpec(
-    "Parameters"
-)  # Type hint for the parameters of a function (generic)
-ReturnType = TypeVar(
-    "ReturnType"
-)  # Type hint for the return type of a function (generic)
+Parameters = ParamSpec("Parameters")  # Type hint for the parameters of a function (generic)
+ReturnType = TypeVar("ReturnType")  # Type hint for the return type of a function (generic)
 
 PROJECT_DIRECTORY = Path.cwd().resolve()
 GIT_DIRECTORY = PROJECT_DIRECTORY / ".git"
 
 
-def print_with_style(
-    message: str, color: str = Fore.BLUE, style: str = Style.NORMAL
-) -> None:
+def print_with_style(message: str, color: str = Fore.BLUE, style: str = Style.NORMAL) -> None:
     """
     Print a message with a specific style and color, then reset the style.
 
@@ -150,9 +144,7 @@ def async_run(
     """
 
     @functools.wraps(func)
-    def wrapper(
-        *args: Parameters.args, **kwargs: Parameters.kwargs
-    ) -> Awaitable[ReturnType]:
+    def wrapper(*args: Parameters.args, **kwargs: Parameters.kwargs) -> Awaitable[ReturnType]:
         return asyncio.run(func(*args, **kwargs))
 
     return wrapper
@@ -247,9 +239,7 @@ async def execute(*command_to_run: str, working_directory: Path | None = None) -
         working_directory = Path.cwd()
 
     try:
-        proc = await async_io_process(
-            *command_to_run, working_directory=working_directory
-        )
+        proc = await async_io_process(*command_to_run, working_directory=working_directory)
         await proc.wait()
     except Exception as e:
         print(e)
@@ -274,12 +264,17 @@ if __name__ == "__main__":
         )
         run_command_with_message(
             "Configuring git user name...",
-            ["git", "config", "user.name", "{{ cookiecutter.author_name }}"],
+            ["git", "config", "user.name", "{{ cookiecutter.author_username }}"],
             working_directory=PROJECT_DIRECTORY,
         )
         run_command_with_message(
             "Configuring git user email...",
             ["git", "config", "user.email", "{{ cookiecutter.author_email }}"],
+            working_directory=PROJECT_DIRECTORY,
+        )
+        run_command_with_message(
+            "Configuring default git branch name...",
+            ["git", "config", "init.defaultBranch", "main"],
             working_directory=PROJECT_DIRECTORY,
         )
 
