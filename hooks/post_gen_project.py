@@ -283,15 +283,10 @@ if __name__ == "__main__":
         ["poetry", "install"],
     )
 
-    # Run scripts
-    if os.name == "nt":  # Windows
-        bash_command = "bash"
-    else:  # Unix-like
-        bash_command = "/usr/bin/env bash"
-
+    # Export the requirements to relevant files
     run_command_with_message(
         "Exporting requirements to files...",
-        [bash_command, "scripts/export_requirements.sh"],
+        ["bash", "scripts/export_requirements.sh"],
     )
 
     # Add and commit the changes to the git repository
@@ -307,5 +302,5 @@ if __name__ == "__main__":
     # Run the release script (hardcoded to minor initial release)
     run_command_with_message(
         "Running the release script...",
-        [bash_command, "scripts/release.sh", "minor", "{{ cookiecutter.PYPI_TOKEN }}"],
+        ["bash", "scripts/release.sh", "minor", "{{ cookiecutter.PYPI_TOKEN }}"],
     )
