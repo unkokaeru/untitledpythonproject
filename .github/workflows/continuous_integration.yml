@@ -148,7 +148,7 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          echo "https://${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
+          echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
 
       - name: Determine version type from commit message
         id: get_version

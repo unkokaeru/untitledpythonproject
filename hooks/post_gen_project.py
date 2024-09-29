@@ -260,6 +260,7 @@ async def execute(*command_to_run: str, working_directory: Path | None = None) -
 if __name__ == "__main__":
     # Initialise and configure the git repository
     if not GIT_DIRECTORY.exists():
+        # Initialise the git repository
         run_command_with_message(
             "Initialising git repository...",
             ["git", "init"],
@@ -275,6 +276,8 @@ if __name__ == "__main__":
                 "{{ cookiecutter.__project_name_underscored }}.git",
             ],
         )
+
+        # Configure the git repository
         run_command_with_message(
             "Configuring git user name...",
             ["git", "config", "user.name", "{{ cookiecutter.author_username }}"],
@@ -286,6 +289,18 @@ if __name__ == "__main__":
         run_command_with_message(
             "Configuring default git branch name...",
             ["git", "config", "init.defaultBranch", "main"],
+        )
+
+        # Add credentials to the git repository
+        with open(os.path.expanduser("~/.git-credentials"), "w") as cred_file:
+            cred_file.write(
+                "https://{{ cookiecutter.author_username }}:"
+                "{{ cookiecutter.GH_TOKEN }}@github.com\n"
+            )
+
+        run_command_with_message(
+            "Configuring Git to use the credentials file...",
+            ["git", "config", "--global", "credential.helper", "store"],
         )
 
     # Create a virtual environment to handle dependencies
