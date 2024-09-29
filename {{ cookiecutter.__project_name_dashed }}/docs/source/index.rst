@@ -28,8 +28,10 @@ Features
 --------
 
 -  ☒ Installable via pip
--  ☒ Command-line interface{% if cookiecutter.gui_required == 'true' %}
--  ☒ Graphical interface{% endif %}
+-  ☒ Command-line interface
+{% if cookiecutter.gui_required == 'true' %}
+-  ☒ Graphical interface
+{% endif %}
 -  ☒ Interactive documentation
 -  ☐ Some new planned feature
 
