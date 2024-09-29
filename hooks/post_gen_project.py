@@ -319,7 +319,7 @@ if __name__ == "__main__":
         ["bash", "scripts/export_requirements.sh"],
     )
 
-    # Add and commit the changes to the git repository
+    # Add, commit, and push the changes to the git repository
     run_command_with_message(
         "Adding changes to the git repository...",
         ["git", "add", "."],
@@ -327,6 +327,10 @@ if __name__ == "__main__":
     run_command_with_message(
         "Committing changes to the git repository...",
         ["git", "commit", "-m", "Initial commit"],
+    )
+    run_command_with_message(
+        "Pushing changes to the remote repository...",
+        ["git", "push", "-u", "origin", "main"],
     )
 
     # Run the release script (hardcoded to minor initial release)
