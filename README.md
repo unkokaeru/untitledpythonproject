@@ -44,6 +44,10 @@ and then
 cookiecutter gh:unkokaeru/untitledpythonproject
 ```
 
+In order for GitHub Pages `docs` deployment and the TODO action to work, then you'll need to configure your new repository on GitHub a bit first. In your repository settings, go to...
+- Code and automation -> Actions -> General -> Workflow permissions, then enable "Read and write permissions".
+- Code and automation -> Pages -> Build and Development -> Branch, then select the `docs` branch and save.
+
 ## Documentation
 For more information, you can find the documentation within the [docs](./docs/index.html) directory or on the project's [GitHub Pages](https://unkokaeru.github.io/untitledpythonproject/).
 
