@@ -16,13 +16,12 @@ Welcome to the documentation for {{ cookiecutter.project_name }}!
 
 {{ cookiecutter.project_short_description }}
 
--  [{{ cookiecutter.project_name }}](#{{ cookiecutter.project_name }})
-    -  `Features <#features>`__
-    -  `Installation <#installation>`__
-    -  `Usage <#usage>`__
-    -  `Documentation <#documentation>`__
-    -  `Contributing <#contributing>`__
-    -  `License <#license>`__
+-  `Features <#features>`__
+-  `Installation <#installation>`__
+-  `Usage <#usage>`__
+-  `Documentation <#documentation>`__
+-  `Contributing <#contributing>`__
+-  `License <#license>`__
 
 Features
 --------

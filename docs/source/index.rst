@@ -16,12 +16,11 @@ Welcome to the documentation for untitledpythonproject!
 
 Yet another Python project template.
 
--  [untitledpythonproject](#untitledpythonproject)
-    -  `Features <#features>`__
-    -  `Installation and Usage <#installation-and-usage>`__
-    -  `Documentation <#documentation>`__
-    -  `Contributing <#contributing>`__
-    -  `License <#license>`__
+-  `Features <#features>`__
+-  `Installation and Usage <#installation-and-usage>`__
+-  `Documentation <#documentation>`__
+-  `Contributing <#contributing>`__
+-  `License <#license>`__
 
 Features
 --------
