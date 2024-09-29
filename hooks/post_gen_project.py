@@ -259,7 +259,8 @@ async def execute(*command_to_run: str, working_directory: Path | None = None) -
 
 
 if __name__ == "__main__":
-    if not GIT_DIRECTORY.exists():  # If the project is not already a git repository
+    # Initialise and configure the git repository
+    if not GIT_DIRECTORY.exists():
         run_command_with_message(
             "Initialising git repository...",
             ["git", "init"],
@@ -277,18 +278,24 @@ if __name__ == "__main__":
             ["git", "config", "init.defaultBranch", "main"],
         )
 
+    # Create a virtual environment to handle dependencies
     run_command_with_message(
         "Creating virtual environment and installing dependencies...",
         ["poetry", "install"],
     )
+
+    # Run scripts
+    if os.name == "nt":  # Windows
+        bash_command = "bash"
+    else:  # Unix-like
+        bash_command = "/usr/bin/env bash"
+
     run_command_with_message(
         "Exporting requirements to files...",
-        (
-            ["bash", "scripts/export_requirements.sh"]
-            if os.name == "nt"  # Windows
-            else ["/usr/bin/env", "bash", "scripts/export_requirements.sh"]
-        ),  # Unix-like
+        [bash_command, "scripts/export_requirements.sh"],
     )
+
+    # Add and commit the changes to the git repository
     run_command_with_message(
         "Adding changes to the git repository...",
         ["git", "add", "."],
