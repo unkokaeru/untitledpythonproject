@@ -19,6 +19,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Suggesting Enhancements](#suggesting-enhancements)
 - [Styleguides](#styleguides)
 - [Best Practices](#best-practices)
+- [Version Support](#version-support)
 - [Commit Messages](#commit-messages)
 - [Documentation Strings](#documentation-strings)
 
@@ -147,6 +148,10 @@ $ tox -e lint
 7. **Review Your Changes**: Before submitting your contribution, review your code for any potential issues, such as unused imports, formatting inconsistencies, or logical errors. Run the tests to ensure everything passes.
 
 8. **Engage with the Community**: If you have questions or need clarification while working on your contribution, feel free to reach out through the appropriate channels.
+
+#### Version Support
+
+Based on [SPEC 0](https://scientific-python.org/specs/spec-0000/), all minor versions of Python released 42 months prior, and at minimum the two latest minor versions are supported.
 
 #### Commit Messages
 

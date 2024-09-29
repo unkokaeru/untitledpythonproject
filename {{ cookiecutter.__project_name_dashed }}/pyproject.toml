@@ -19,7 +19,7 @@ include = ["LICENSE", "source/{{ cookiecutter.__project_name_underscored }}/py.t
 
 [tool.poetry.dependencies]
 # Main project dependencies.
-python = ">=3.9,<4.0"
+python = "^3.10"
 rich = "^13.7.1"
 
 [tool.poetry.group.dev.dependencies]

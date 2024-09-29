@@ -20,7 +20,7 @@ untitledpythonproject = "untitledpythonproject.main:main"
 [tool.poetry.dependencies]
 # Main project dependencies.
 colorama = "^0.4.4"
-python = ">=3.9,<4.0"
+python = "^3.10"
 rich = "^13.7.1"
 
 [tool.poetry.group.dev.dependencies]
