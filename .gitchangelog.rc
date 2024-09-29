@@ -55,7 +55,7 @@ body_process = ReSub(r'^(?!\s*$).+', r'') | strip
 
 ## Extract the summary from the commit message
 subject_process = (strip |
-    ReSub(r'^(?P<type>[a-z]+): (?P<summary>.*)$', r'\2') |
+    ReSub(r'^(?P<type>[a-z]+[!]?): (?P<summary>.*)$', r'\2') |
     SetIfEmpty("No commit message.") | ucfirst | final_dot)
 
 
