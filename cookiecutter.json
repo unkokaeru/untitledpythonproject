@@ -1,4 +1,5 @@
 {
+    "PYPI_TOKEN": "",
     "author_name": "",
     "author_email": "",
     "author_username": "",
@@ -18,6 +19,7 @@
     "__project_name_dashed": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "__project_name_underscored": "{{ cookiecutter.__project_name_dashed.replace('-', '_') }}",
     "__prompts__": {
+        "PYPI_TOKEN": "What is your full scope PyPI token? (https://pypi.org/manage/account/token/)",
         "author_name": "What is the project author's name?",
         "author_email": "What is the project author's email?",
         "author_username": "What is the project author's username?",

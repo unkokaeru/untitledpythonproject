@@ -304,8 +304,8 @@ if __name__ == "__main__":
         ["git", "commit", "-m", "Initial commit"],
     )
 
-    # Run the release script
+    # Run the release script (hardcoded to minor initial release)
     run_command_with_message(
         "Running the release script...",
-        [bash_command, "scripts/release.sh", "minor"],  # Hardcoded to minor for initial release
+        [bash_command, "scripts/release.sh", "minor", "{{ cookiecutter.PYPI_TOKEN }}"],
     )

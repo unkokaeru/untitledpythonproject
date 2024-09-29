@@ -149,10 +149,6 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           echo "https://${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
-          
-      - name: Configure poetry
-        run: |
-          poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
 
       - name: Determine version type from commit message
         id: get_version
@@ -180,7 +176,8 @@ jobs:
           attempt=0
           until [ $attempt -ge $max_attempts ]
           do
-            tox -e release -- ${{ steps.get_version.outputs.version_type }} && break
+            tox -e release -- ${{ steps.get_version.outputs.version_type }} \
+              ${{ secrets.PYPI_TOKEN }} && break
             exit_code=$?
 
             if [ $exit_code -eq 0 ]; then

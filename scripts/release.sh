@@ -94,12 +94,20 @@ echo "Pushing the new tag to the remote repository..."
 git push --follow-tags
 echo "Release $new_version created successfully."
 
-# Build the package for PyPI
-echo "Building the package..."
-poetry build
-echo "Package built successfully."
+# Check if the PYPI_TOKEN is provided
+if [ -z "$2" ]; then
+    echo "No PYPI_TOKEN provided. Skipping build and publish steps."
+    echo "Please run the script again with the PYPI_TOKEN as an argument or,"
+    echo "if ran in the CI/CD pipeline, ensure the secret PYPI_TOKEN is set."
+else
+    # Build the package for PyPI
+    echo "Building the package..."
+    poetry build
+    echo "Package built successfully."
 
-# Publish the package to PyPI
-echo "Publishing the package to PyPI..."
-poetry publish
-echo "Package published to PyPI successfully."
+    # Publish the package to PyPI
+    echo "Publishing the package to PyPI..."
+    poetry config pypi-token.pypi "$2"  # Configure the token
+    poetry publish
+    echo "Package published to PyPI successfully."
+fi
