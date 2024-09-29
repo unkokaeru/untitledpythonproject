@@ -303,3 +303,9 @@ if __name__ == "__main__":
         "Committing changes to the git repository...",
         ["git", "commit", "-m", "Initial commit"],
     )
+
+    # Run the release script
+    run_command_with_message(
+        "Running the release script...",
+        [bash_command, "scripts/release.sh", "minor"],  # Hardcoded to minor for initial release
+    )
