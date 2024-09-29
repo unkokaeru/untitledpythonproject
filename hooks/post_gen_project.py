@@ -273,7 +273,7 @@ if __name__ == "__main__":
                 "add",
                 "origin",
                 "https://github.com/{{ cookiecutter.author_username }}/"
-                "{{ cookiecutter.__project_name_underscored }}.git",
+                "{{ cookiecutter.__project_name_underscored }}",
             ],
         )
 
@@ -288,7 +288,11 @@ if __name__ == "__main__":
         )
         run_command_with_message(
             "Configuring default git branch name...",
-            ["git", "config", "init.defaultBranch", "main"],
+            ["git", "config", "--global", "init.defaultBranch", "main"],
+        )
+        run_command_with_message(
+            "Configuring git branch name...",
+            ["git", "branch", "-m", "main"],
         )
 
         # Add credentials to the git repository
