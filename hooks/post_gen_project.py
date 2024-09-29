@@ -265,6 +265,17 @@ if __name__ == "__main__":
             ["git", "init"],
         )
         run_command_with_message(
+            "Adding remote repository...",
+            [
+                "git",
+                "remote",
+                "add",
+                "origin",
+                "https://github.com/{{ cookiecutter.author_username }}/"
+                "{{ cookiecutter.__project_name_underscored }}.git",
+            ],
+        )
+        run_command_with_message(
             "Configuring git user name...",
             ["git", "config", "user.name", "{{ cookiecutter.author_username }}"],
         )
