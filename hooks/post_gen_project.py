@@ -62,6 +62,9 @@ def run_command_with_message(
     working_directory : Path, optional
         The working directory of the subprocess, by default None.
     """
+    if working_directory is None:
+        working_directory = PROJECT_DIRECTORY
+
     print_with_style(message)
     execute(*command, working_directory=working_directory)
 
@@ -260,41 +263,23 @@ if __name__ == "__main__":
         run_command_with_message(
             "Initialising git repository...",
             ["git", "init"],
-            working_directory=PROJECT_DIRECTORY,
         )
         run_command_with_message(
             "Configuring git user name...",
             ["git", "config", "user.name", "{{ cookiecutter.author_username }}"],
-            working_directory=PROJECT_DIRECTORY,
         )
         run_command_with_message(
             "Configuring git user email...",
             ["git", "config", "user.email", "{{ cookiecutter.author_email }}"],
-            working_directory=PROJECT_DIRECTORY,
         )
         run_command_with_message(
             "Configuring default git branch name...",
             ["git", "config", "init.defaultBranch", "main"],
-            working_directory=PROJECT_DIRECTORY,
         )
 
     run_command_with_message(
-        "Creating virtual environment...",
-        [sys.executable, "-m", "venv", ".venv"],
-    )
-    run_command_with_message(
-        "Installing all dev dependency packages...",
-        (
-            [".venv/Scripts/activate.bat && poetry install"]
-            if os.name == "nt"  # Windows
-            else [
-                "/usr/bin/env",
-                "bash",
-                "-c",
-                ".venv/Scripts/activate.bat && poetry install",
-            ]
-        ),  # Unix-like
-        working_directory=PROJECT_DIRECTORY,
+        "Creating virtual environment and installing dependencies...",
+        ["poetry", "install"],
     )
     run_command_with_message(
         "Exporting requirements to files...",
@@ -303,24 +288,12 @@ if __name__ == "__main__":
             if os.name == "nt"  # Windows
             else ["/usr/bin/env", "bash", "scripts/export_requirements.sh"]
         ),  # Unix-like
-        working_directory=PROJECT_DIRECTORY,
-    )
-    run_command_with_message(
-        "Running initial linting checks...",
-        (
-            ["bash", "scripts/lint-and-format.sh"]
-            if os.name == "nt"  # Windows
-            else ["/usr/bin/env", "bash", "scripts/lint-and-format.sh"]
-        ),  # Unix-like
-        working_directory=PROJECT_DIRECTORY,
     )
     run_command_with_message(
         "Adding changes to the git repository...",
         ["git", "add", "."],
-        working_directory=PROJECT_DIRECTORY,
     )
     run_command_with_message(
         "Committing changes to the git repository...",
         ["git", "commit", "-m", "Initial commit"],
-        working_directory=PROJECT_DIRECTORY,
     )
