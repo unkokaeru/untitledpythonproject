@@ -10,9 +10,6 @@ ignore_regexps = [
     r'^[^:]+$',  # Ignore commits that do not have a colon
     r'^$',     # Ignore empty messages
     r'^Merge branch',
-    r'^Update poetry\.lock$',
-    r'^Update requirements files$',
-    r'^Bump version:'
 ]
 
 
@@ -32,6 +29,9 @@ section_regexps = [
     ]),
     ('CI', [
         r'^[cC][iI]: (.*)$',
+    ]),
+    ('Chore', [
+        r'^[cC]hore: (.*)$',
     ]),
     ('Docs', [
         r'^[dD]ocs: (.*)$',
