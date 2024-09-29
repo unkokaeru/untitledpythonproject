@@ -266,6 +266,19 @@ if __name__ == "__main__":
             ["git", "init"],
         )
         run_command_with_message(
+            "Creating GitHub repository...",
+            [
+                "gh",
+                "repo",
+                "create",
+                "{{ cookiecutter.author_username }}/{{ cookiecutter.__project_name_underscored }}",
+                "--{{ cookiecutter.project_visibility }}",
+                "--description",
+                "{{ cookiecutter.project_short_description }}",
+                "--confirm",  # Automatically confirm the creation
+            ],
+        )
+        run_command_with_message(
             "Adding remote repository...",
             [
                 "git",
@@ -273,7 +286,7 @@ if __name__ == "__main__":
                 "add",
                 "origin",
                 "https://github.com/{{ cookiecutter.author_username }}/"
-                "{{ cookiecutter.__project_name_underscored }}",
+                "{{ cookiecutter.__project_name_underscored }}.git",
             ],
         )
 
