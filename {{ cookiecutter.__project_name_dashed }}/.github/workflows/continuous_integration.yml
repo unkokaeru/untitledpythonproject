@@ -17,10 +17,10 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python 3.12
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12'
         cache: 'pip'
@@ -31,13 +31,13 @@ jobs:
         python -m pip install tox
 
     - name: Cache tox environment
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: .tox
         key: 3.12-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('tox.ini') }}
 
     - name: Cache pre-commit environment
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.cache/pre-commit
         key: 3.12-pre-commit-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
@@ -59,10 +59,10 @@ jobs:
         python-version: ['3.10', '3.11', '3.12']
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
@@ -73,7 +73,7 @@ jobs:
         python -m pip install tox tox-gh-actions
 
     - name: Cache tox environment
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: .tox
         key: ${{ matrix.python-version }}-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('tox.ini') }}
@@ -87,10 +87,10 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
@@ -101,7 +101,7 @@ jobs:
           python -m pip install tox
 
       - name: Cache tox environment
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .tox
           key: 3.11-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('tox.ini') }}
@@ -116,7 +116,7 @@ jobs:
           message: "@auto Update docs"
 
       - name: Deploy new docs if they've been updated
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: docs
           folder: docs/build/html
@@ -128,12 +128,12 @@ jobs:
       - docs  # Ensure docs are built before releasing to avoid unsynced docs
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Fetch all history for changelog generation
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
